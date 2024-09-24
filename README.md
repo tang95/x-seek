@@ -1,27 +1,6 @@
 # X-Seek
 
-## 快速开始
-
-#### 1. 配置文件
-
-生成配置文件，参考 [server.yml](conf/server.yaml)
-
-#### 2. Docker 运行
-
-```shell
-docker pull ghcr.io/tang95/x-seek:main
-
-docker run --rm \
-  -p 8080:8080 \
-  -v server.yaml:/app/config.yaml \
-  ghcr.io/tang95/x-seek:main
-```
-
-#### 3. 访问
-
-打开 http://localhost:8080
-
-## 贡献
+## 开发
 
 #### 1. Git 克隆
 
