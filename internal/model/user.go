@@ -15,7 +15,8 @@ type User struct {
 	Description string `gorm:"type:text; comment:描述"`
 	Avatar      string `gorm:"type: varchar(255); comment:头像"`
 	Role        Role   `gorm:"type:varchar(20); not null; comment:角色"`
-	DingTalkID  string `gorm:"type:varchar(100); comment:钉钉ID"`
+	DingtalkID  string `gorm:"type:varchar(100); comment:钉钉ID"`
+	GithubID    string `gorm:"type:varchar(100); comment:GithubID"`
 }
 
 func (User) TableName() string {
@@ -33,4 +34,5 @@ type UserRepo interface {
 	Update(ctx context.Context, id string, user *User) error
 	GetByGithubID(ctx context.Context, githubID string) (*User, error)
 	Count(ctx context.Context) (int64, error)
+	GetByDingtalkID(ctx context.Context, unionId string) (*User, error)
 }

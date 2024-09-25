@@ -17,8 +17,14 @@ type Server struct {
 	} `mapstructure:"database"`
 	OAuth struct {
 		Github struct {
+			Enabled      bool   `mapstructure:"enabled"`
 			ClientId     string `mapstructure:"client_id"`
 			ClientSecret string `mapstructure:"client_secret"`
 		} `mapstructure:"github"`
+		DingTalk struct {
+			Enabled      bool   `mapstructure:"enabled"`
+			ClientId     string `mapstructure:"client_id"`
+			ClientSecret string `mapstructure:"client_secret"`
+		}
 	} `mapstructure:"oauth"`
 }

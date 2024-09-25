@@ -61,6 +61,7 @@ func (g *github) LoginByCode(ctx context.Context, code string, autoRegister bool
 				Description: gUser.Bio,
 				Avatar:      gUser.AvatarURL,
 				Role:        model.Member,
+				GithubID:    gUser.Login,
 			})
 			if err != nil {
 				return nil, err

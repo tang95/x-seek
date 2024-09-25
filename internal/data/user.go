@@ -21,6 +21,21 @@ func (repo *userRepo) Count(ctx context.Context) (int64, error) {
 	return count, tx.Error
 }
 
+func (repo *userRepo) GetByDingtalkID(ctx context.Context, unionId string) (*model.User, error) {
+	users := make([]*model.User, 0)
+	tx := repo.DB(ctx).Find(&users, "dingtalk_id = ?", unionId)
+	if tx.Error != nil {
+		return nil, tx.Error
+	}
+	if len(users) == 0 {
+		return nil, gorm.ErrRecordNotFound
+	}
+	if len(users) > 1 {
+		return nil, errors.New("found more than one user")
+	}
+	return users[0], nil
+}
+
 func (repo *userRepo) GetByGithubID(ctx context.Context, githubID string) (*model.User, error) {
 	users := make([]*model.User, 0)
 	tx := repo.DB(ctx).Find(&users, "github_id = ?", githubID)

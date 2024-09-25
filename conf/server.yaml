@@ -10,5 +10,10 @@ database:
 domain: http://localhost:8080
 oauth:
   github:
+    enabled: false
+    client_id: your_client_id
+    client_secret: your_client_secret
+  dingtalk:
+    enabled: false
     client_id: your_client_id
     client_secret: your_client_secret

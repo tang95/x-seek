@@ -38,11 +38,20 @@ func NewAuth(config *config.Server, logger *zap.Logger, svc *service.Service) *A
 		service: svc,
 	}
 	providers := make(map[string]OAuth)
-	providers[GITHUB] = newGithub(
-		config.OAuth.Github.ClientId,
-		config.OAuth.Github.ClientSecret,
-		auth,
-	)
+	if config.OAuth.DingTalk.Enabled {
+		providers[DINGTALK] = newDingtalk(
+			config.OAuth.DingTalk.ClientId,
+			config.OAuth.DingTalk.ClientSecret,
+			auth,
+		)
+	}
+	if config.OAuth.Github.Enabled {
+		providers[GITHUB] = newGithub(
+			config.OAuth.Github.ClientId,
+			config.OAuth.Github.ClientSecret,
+			auth,
+		)
+	}
 	auth.providers = providers
 	return auth
 }
